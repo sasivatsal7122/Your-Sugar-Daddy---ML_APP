@@ -2,6 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as stc 
 from eda_app import run_eda_app
 from ml_app import run_ml_app
+from PIL import Image
 
 html_temp = """
 		<div style="background-color:#072227;padding:10px;border-radius:10px">
@@ -15,8 +16,10 @@ def main():
 	stc.html(html_temp)
 	st.markdown("<p><TT>Designed and Developed by <a style='text-decoration:none;color:red' target='_blank' href='https://github.com/sasivatsal7122'>B.Sasi Vatsal</a></TT></p>", unsafe_allow_html=True)
 
-	menu = ["Home","EDA","ML","About"]
-	choice = st.sidebar.selectbox("Menu",menu)
+	menu = ["Diabetic Diagnosis","EDA","About"]
+	st.sidebar.write("1.Select EDA option to see detailed analysis of the datset")
+	st.sidebar.write("2.Select Diabetic Diagnosis to use Diabetes Risk Predictor")
+	choice = st.sidebar.selectbox("Choose One of the Option",menu)
 
 	if choice == "Home":
 		st.subheader("Home")
@@ -32,10 +35,10 @@ def main():
 			""")
 	elif choice == "EDA":
 		run_eda_app()
-	elif choice == "ML":
+	elif choice == "Diabetic Diagnosis":
 		run_ml_app()
 	else:
-		pass
+		image = Image.open()
 
 if __name__ == '__main__':
 	main()
