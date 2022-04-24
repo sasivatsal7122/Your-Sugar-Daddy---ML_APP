@@ -47,6 +47,7 @@ def get_value(val,my_dict):
 
 
 
+# Load ML Models
 @st.cache
 def load_model(model_file):
 	loaded_model = joblib.load(open(os.path.join(model_file),"rb"))
@@ -60,7 +61,8 @@ def run_ml_app():
 	with st.beta_expander("Attributes Info"):
 		st.markdown(attrib_info,unsafe_allow_html=True)
 
-	col1,col2 = st.columns(2)
+	# Layout
+	col1,col2 = st.beta_columns(2)
 
 	with col1:
 		age = st.number_input("Age",10,100)
@@ -111,6 +113,8 @@ def run_ml_app():
 			else:
 				encoded_result.append(get_fvalue(i))
 
+
+		# st.write(encoded_result)
 	with st.beta_expander("Prediction Results"):
 		single_sample = np.array(encoded_result).reshape(1,-1)
 
