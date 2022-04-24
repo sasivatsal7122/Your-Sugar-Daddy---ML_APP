@@ -3,16 +3,17 @@ import streamlit.components.v1 as stc
 from eda_app import run_eda_app
 from ml_app import run_ml_app
 from PIL import Image
+import webbrowser
 
 html_temp = """
-		<div style="background-color:#072227;padding:10px;border-radius:10px">
-		<h1 style="color:#35858B;text-align:center;">Early Stage Diabetes Risk Predictor Web App</h1>
-		<h4 style="color:#DDDDDD;text-align:center;">Your Personal Sugar Daddy 👅</h4>
+		<div style="background-color:#35858B;padding:10px;border-radius:10px">
+		<h1 style="color:#AEFEFF;text-align:center;">Early Stage Diabetes Risk Predictor Web App</h1>
+		<h2 style="color:#064663;text-align:center;">Your Personal Sugar Daddy 👅</h2>
 		</div>
 		"""
 
 def main():
-	# st.title("ML Web App with Streamlit")
+	st.set_page_config(page_title="Your Sugar Daddy",page_icon='🍫',layout="wide")
 	stc.html(html_temp)
 	st.markdown("<p><TT>Designed and Developed by <a style='text-decoration:none;color:red' target='_blank' href='https://github.com/sasivatsal7122'>B.Sasi Vatsal</a></TT></p>", unsafe_allow_html=True)
 
@@ -38,7 +39,23 @@ def main():
 	elif choice == "Diabetic Diagnosis":
 		run_ml_app()
 	else:
-		image = Image.open()
+		image = Image.open('preview/dp.jpg')
+		col1,col2 = st.columns([1,2])
+		with col1:
+  			st.image(image)
+		
+		with col2:
+			st.markdown("<h1> Hey There <span style = 'display: block;'> I'm Sasi Vatsal</span> </h1>",unsafe_allow_html=True)
+			st.markdown("<h5>Python - Data Science - Machine Learning Developer<h5>",unsafe_allow_html=True)
+			st.write("A Self- motivated, Inquisitive, energetic computer science engineering student skilled in leadership, with a strong foundation in math, logic, and cross-platform coding with proven and tested engineering, management, marketing skills Seeking a challenging role at a reputed organization to utilize my skills usefully and effectievely")
+			
+			st.text("Connect With ME : ")
+			github = st.button("Visit My Github")
+			linkedin = st.button("Visit My Linkedin")
+			if github:
+				webbrowser.open('https://github.com/sasivatsal7122')
+			if linkedin:
+				webbrowser.open('https://www.linkedin.com/in/sasi-vatsal-606195215/')
 
 if __name__ == '__main__':
 	main()

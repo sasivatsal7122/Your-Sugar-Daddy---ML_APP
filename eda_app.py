@@ -64,12 +64,12 @@ def run_eda_app():
 			
 
 		with st.expander("Frequency Dist Plot of Age"):
-			fig,ax = plt.subplots()
-			ax.bar(freq_df['Age'],freq_df['count'])
-			plt.ylabel('Counts')
-			plt.title('Frequency Count of Age')
-			plt.xticks(rotation=45)
-			st.pyplot(fig)
+			# fig,ax = plt.subplots()
+			# ax.bar(freq_df['Age'],freq_df['count'])
+			# plt.ylabel('Counts')
+			# plt.title('Frequency Count of Age')
+			# plt.xticks(rotation=45)
+			# st.pyplot(fig)
 
 			p = px.bar(freq_df,x='Age',y='count')
 			st.plotly_chart(p)
@@ -78,9 +78,9 @@ def run_eda_app():
 			st.plotly_chart(p2)
 
 		with st.expander("Outlier Detection Plot"):
-			fig = plt.figure()
-			sns.boxplot(df['Age'])
-			st.pyplot(fig)
+			# fig = plt.figure()
+			# sns.boxplot(df['Age'])
+			# st.pyplot(fig)
 
 			p3 = px.box(df,x='Age',color='Gender')
 			st.plotly_chart(p3)
