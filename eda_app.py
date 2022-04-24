@@ -22,7 +22,7 @@ def run_eda_app():
 	submenu = st.sidebar.selectbox("SubMenu",["Descriptive","Plots"])
 	if submenu == "Descriptive":
 		
-		st.dataframe(df)
+		#st.dataframe(df)
 
 		with st.expander("Descriptive Summary"):
 			st.dataframe(df_clean.describe())
