@@ -2,6 +2,8 @@ import streamlit as st
 import joblib
 import os
 import numpy as np
+import base64
+
 
 attrib_info = """
 #### Attribute Information:
@@ -81,7 +83,7 @@ def run_ml_app():
 		muscle_stiffness = st.radio("muscle_stiffness",["No","Yes"]) 
 		alopecia = st.radio("alopecia",["No","Yes"]) 
 		obesity = st.select_slider("obesity",["No","Yes"]) 
-
+	st.subheader("View Your Selected Options here")
 	with st.expander("Your Selected Options"):
 		result = {'age':age,
 		'gender':gender,
@@ -109,28 +111,41 @@ def run_ml_app():
 				encoded_result.append(res)
 			else:
 				encoded_result.append(get_fvalue(i))
-
-
-		# st.write(encoded_result)
-	with st.expander("Prediction Results"):
+	st.subheader("View Your Diagnosis Report Here")
+	with st.expander("Predtected Results"):
 		single_sample = np.array(encoded_result).reshape(1,-1)
-
-		
 		prediction = loaded_model.predict(single_sample)
 		pred_prob = loaded_model.predict_proba(single_sample)
-		st.write(prediction)
+		#st.write(prediction)
 		if prediction == 1:
+			file_ = open("preview/coffin.gif", "rb")
+			contents = file_.read()
+			data_url = base64.b64encode(contents).decode("utf-8")
+			file_.close()
+
 			st.warning("Positive Risk-{}".format(prediction[0]))
 			pred_probability_score = {"Negative DM":pred_prob[0][0]*100,"Positive DM":pred_prob[0][1]*100}
 			st.subheader("Prediction Probability Score")
 			st.json(pred_probability_score)
+			st.subheader(f"You are Likely to have diabetics, we estimated there is {round(pred_prob[0][1]*100,4)}% of chance of you having diabteics")
+			st.markdown(
+							f'<img src="data:image/gif;base64,{data_url}" alt="gifffff" width=100%>',
+							unsafe_allow_html=True,
+						)
 		else:
+			file_ = open("preview/cele.gif", "rb")
+			contents = file_.read()
+			data_url = base64.b64encode(contents).decode("utf-8")
+			file_.close()
+
 			st.success("Negative Risk-{}".format(prediction[0]))
 			pred_probability_score = {"Negative DM":pred_prob[0][0]*100,"Positive DM":pred_prob[0][1]*100}
+			
 			st.subheader("Prediction Probability Score")
 			st.json(pred_probability_score)
-			htmll = """<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="https://www.youtube.com/watch?v=j9V78UbdzWI" width="100%" height="100%" style="position:absolute"></img></div><p></p>"""
+			st.subheader(f"Woohoo!, You don't have a risk of diabetics, but we estimated there is {round(pred_prob[0][1]*100,4)}% of chance of you having diabteics. Be Careful Buddy! Take Care! ")
 			st.markdown(
-				htmll,
+				f'<img src="data:image/gif;base64,{data_url}" alt="giffff" width=100%>',
 				unsafe_allow_html=True,
 			)
+			
