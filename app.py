@@ -1,7 +1,7 @@
 import streamlit as st 
 import streamlit.components.v1 as stc 
-from eda_app import run_eda_app
-from ml_app import run_ml_app
+from EDAapp import run_eda_app
+from MLMODELapp import run_ml_app
 from PIL import Image
 import webbrowser
 
@@ -43,7 +43,7 @@ def main():
 		col1,col2 = st.columns([1,2])
 		with col1:
   			st.image(image)
-		
+
 		with col2:
 			st.markdown("<h1> Hey There <span style = 'display: block;'> I'm Sasi Vatsal</span> </h1>",unsafe_allow_html=True)
 			st.markdown("<h5>Python - Data Science - Machine Learning Developer<h5>",unsafe_allow_html=True)

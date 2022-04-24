@@ -24,7 +24,6 @@ attrib_info = """
     - Alopecia 1.Yes, 2.No.
     - Obesity 1.Yes, 2.No.
     - Class 1.Positive, 2.Negative.
-
 """
 label_dict = {"No":0,"Yes":1}
 gender_map = {"Female":0,"Male":1}
@@ -60,7 +59,6 @@ def run_ml_app():
 	with st.expander("Attributes Info"):
 		st.markdown(attrib_info,unsafe_allow_html=True)
 
-	# Layout
 	col1,col2 = st.columns(2)
 
 	with col1:
