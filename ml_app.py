@@ -129,4 +129,8 @@ def run_ml_app():
 			pred_probability_score = {"Negative DM":pred_prob[0][0]*100,"Positive DM":pred_prob[0][1]*100}
 			st.subheader("Prediction Probability Score")
 			st.json(pred_probability_score)
-
+			htmll = """<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="https://www.youtube.com/watch?v=j9V78UbdzWI" width="100%" height="100%" style="position:absolute"></img></div><p></p>"""
+			st.markdown(
+				htmll,
+				unsafe_allow_html=True,
+			)
