@@ -1,4 +1,5 @@
 joblib
+sklearn
 matplotlib
 numpy
 pandas

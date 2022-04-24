@@ -3,7 +3,7 @@ import joblib
 import os
 import numpy as np
 import base64
-
+import sklearn
 
 attrib_info = """
 #### Attribute Information:
