@@ -22,7 +22,7 @@ def run_eda_app():
 	submenu = st.sidebar.selectbox("SubMenu",["Descriptive","Plots"])
 	if submenu == "Descriptive":
 		
-		#st.dataframe(df)
+		st.dataframe(df)
 
 		with st.expander("Descriptive Summary"):
 			st.dataframe(df_clean.describe())
@@ -38,6 +38,7 @@ def run_eda_app():
 		col1,col2 = st.columns([2,1])
 		with col1:
 			with st.expander("Dist Plot of Gender"):
+				
 				fig = plt.figure()
 				sns.countplot(df['Gender'])
 				st.pyplot(fig)
