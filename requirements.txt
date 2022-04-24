@@ -6,5 +6,3 @@ plotly
 seaborn
 streamlit
 webbrowser
-PIL
-base64
