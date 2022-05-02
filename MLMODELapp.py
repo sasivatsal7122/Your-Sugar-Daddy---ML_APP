@@ -54,7 +54,7 @@ def load_model(model_file):
 
 def run_ml_app():
 	st.subheader("Machine Learning Section")
-	loaded_model = load_model("models/logistic_regression_model_diabetes_21_oct_2020.pkl")
+	loaded_model = load_model("models/logistic_regression_model_diabetes.pkl")
 
 	with st.expander("Attributes Info"):
 		st.markdown(attrib_info,unsafe_allow_html=True)
